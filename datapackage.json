@@ -1,0 +1,145 @@
+{
+    "profile": "tabular-data-package",
+    "resources": [
+        {
+            "path": "Desktop\\practice\\city-air-pullution-index\\data\\air_poll_piv.csv",
+            "profile": "tabular-data-resource",
+            "name": "air_poll_piv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "Region",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "Year",
+                        "type": "integer",
+                        "format": "default"
+                    },
+                    {
+                        "name": "Total_emissions",
+                        "type": "number",
+                        "format": "default"
+                    }
+                ],
+                "missingValues": [
+                    ""
+                ]
+            }
+        },
+        {
+            "path": "Desktop\\practice\\city-air-pullution-index\\data\\air_poll.csv",
+            "profile": "tabular-data-resource",
+            "name": "air_poll",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "field1",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2005.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2006.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2007.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2008.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2009.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2010.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2011.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2012.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2013.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2014.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2015.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2016.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2017.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2018.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2019.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2020.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2021.0",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "2022.0",
+                        "type": "number",
+                        "format": "default"
+                    }
+                ],
+                "missingValues": [
+                    ""
+                ]
+            }
+        }
+    ]
+}
