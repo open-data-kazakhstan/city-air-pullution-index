@@ -5,26 +5,53 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 xls_file_path = r"C:\Users\USER\Desktop\practice\city-air-pullution-index\archive\air_poll.xls"
-
 csv_file_path = r'C:\Users\USER\Desktop\practice\city-air-pullution-index\data\air_poll.csv'
 
+# Словарь с соответствиями названий регионов
+region_translation = {
+    'Абай': 'Abai Region',
+    'Акмолинская': 'Akmola Region',
+    'Актюбинская': 'Aktobe Region',
+    'Алматинская': 'Almaty Region',
+    'Атырауская': 'Atyrau Region',
+    'Западно-Казахстанская': 'West Kazakhstan Region',
+    'Жамбылская': 'Jambyl Region',
+    'Жетісу': 'Jetisu Region',
+    'Карагандинская': 'Karaganda Region',
+    'Костанайская': 'Kostanay Region',
+    'Кызылординская': 'Kyzylorda Region',
+    'Мангистауская': 'Mangystau Region',
+    'Павлодарская': 'Pavlodar Region',
+    'Северо-Казахстанская': 'North Kazakhstan Region',
+    'Туркестанская': 'Turkistan Region',
+    'Ұлытау': 'Ulytau Region',
+    'Восточно-Казахстанская': 'East Kazakhstan Region',
+    'г. Астана': 'Astana city',
+    'г. Алматы': 'Almaty city',
+    'г.Шымкент': 'Shymkent city'
+}
 
+# Открытие файла Excel
 workbook = xlrd.open_workbook(xls_file_path)
-
-
 sheet = workbook.sheet_by_index(0)
 
+# Получение заголовка
 header = sheet.row_values(2)
 
-with open(csv_file_path, 'w', newline='',encoding='utf-8') as csv_file:
+# Открытие CSV файла для записи
+with open(csv_file_path, 'w', newline='', encoding='utf-8') as csv_file:
     csv_writer = csv.writer(csv_file)
     
-    
+    # Запись заголовка
     csv_writer.writerow(header)
     
+    # Запись данных
     for row_idx in range(3, sheet.nrows):
-        csv_writer.writerow(sheet.row_values(row_idx))
-
+        row = sheet.row_values(row_idx)
+        # Замена названий регионов на латиницу (предполагая, что регион находится в первой колонке)
+        region_name = row[0]
+        row[0] = region_translation.get(region_name, region_name)
+        csv_writer.writerow(row)
 
 csv = r"C:\Users\USER\Desktop\practice\city-air-pullution-index\data\air_poll.csv"
 df = pd.read_csv(csv)
@@ -46,14 +73,17 @@ df_unpivot['Year'] = pd.to_numeric(df_unpivot['Year'].astype(str).str.replace(r'
 df_unpivot = df_unpivot.dropna(subset=['Year']).astype({'Year': int})
 
 # Rename columns
-df_unpivot.rename(columns={"Year": "Year", "Region": "Region", "Total_emissions(тыс.тонн)": "Total_emissions"}, inplace=True)
+df_unpivot.rename(columns={"Year": "Year", "Region": "Region", "Total_emissions(тыс.тонн)": "Value"}, inplace=True)
+
+# Удаление столбца Year
+df_unpivot = df_unpivot.drop(columns=['Year'])
 
 print(df_unpivot)
 
 data_types = df_unpivot.dtypes
 print(data_types)
 
-# Export to kazpop.csv
+
 df_unpivot.to_csv(r'C:\Users\USER\Desktop\practice\city-air-pullution-index\data\air_poll_piv.csv', index=False)
 
 
@@ -64,7 +94,7 @@ file_path = r'C:\Users\USER\Desktop\practice\city-air-pullution-index\data\air_p
 df = pd.read_csv(file_path)
 
 # Сортировка DataFrame по убыванию значений 'Total_emissions'
-df = df.sort_values(by='Total_emissions', ascending=False)
+df = df.sort_values(by='Value', ascending=False)
 
 # Создание графика пирога
 fig, ax = plt.subplots(figsize=(12, 8))
@@ -72,7 +102,7 @@ fig, ax = plt.subplots(figsize=(12, 8))
 # Using 'tab20' colormap
 cmap = cm.get_cmap('tab20', len(df))
 
-wedges, texts, autotexts = ax.pie(df['Total_emissions'], labels=None, autopct='%1.1f%%', startangle=140, wedgeprops=dict(width=0.4), pctdistance=0.85, colors=cmap.colors)
+wedges, texts, autotexts = ax.pie(df['Value'], labels=None, autopct='%1.1f%%', startangle=140, wedgeprops=dict(width=0.4), pctdistance=0.85, colors=cmap.colors)
 
 # Установка местоположения текста внутри или снаружи пирога
 ax.axis('equal')  # Убедитесь, что круг выглядит как круг

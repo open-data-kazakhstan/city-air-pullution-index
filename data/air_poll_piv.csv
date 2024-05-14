@@ -1,21 +1,21 @@
-Region,Year,Total_emissions
-Абай,2022,39.0
-Акмолинская,2022,69.5
-Актюбинская,2022,136.5
-Алматинская,2022,28.8
-Атырауская,2022,132.1
-Западно-Казахстанская,2022,25.8
-Жамбылская,2022,52.9
-Жетісу,2022,13.08
-Карагандинская,2022,469.0
-Костанайская,2022,121.4
-Кызылординская,2022,23.4
-Мангистауская,2022,78.7
-Павлодарская,2022,724.2
-Северо-Казахстанская,2022,52.7
-Туркестанская ,2022,25.2
-Ұлытау,2022,105.0
-Восточно-Казахстанская,2022,83.3
-г. Астана,2022,57.7
-г. Алматы,2022,41.5
-г.Шымкент,2022,35.0
+Region,Value
+Abai Region,39.0
+Akmola Region,69.5
+Aktobe Region,136.5
+Almaty Region,28.8
+Atyrau Region,132.1
+West Kazakhstan Region,25.8
+Jambyl Region,52.9
+Jetisu Region,13.08
+Karaganda Region,469.0
+Kostanay Region,121.4
+Kyzylorda Region,23.4
+Mangystau Region,78.7
+Pavlodar Region,724.2
+North Kazakhstan Region,52.7
+Туркестанская ,25.2
+Ulytau Region,105.0
+East Kazakhstan Region,83.3
+Astana city,57.7
+Almaty city,41.5
+Shymkent city,35.0
